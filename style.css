@@ -126,7 +126,7 @@ body, html {
 }
 
 .primary-cta {
-    background-color: #ffd700; 
+    background-color: #FDE538; 
     color: #333;
     font-size: 1.1em;
     padding: 12px 28px;
@@ -187,6 +187,551 @@ body, html {
 
 .secondary-cta:hover {
     background-color: #e0a800;
+}
+
+.features-section {
+    padding: 60px 0;
+    background-color: #f8f9fa; /* Fondo ligeramente gris, o #fff si prefieres blanco */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas de igual tamaño */
+    gap: 30px; /* Espacio entre los elementos del grid */
+    align-items: stretch; /* Asegura que los elementos del grid tengan la misma altura si es posible */
+}
+
+/* Estilo para el contenido de texto a la izquierda */
+.feature-text-content {
+    grid-column: span 1; /* Ocupa una columna */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente si hay espacio */
+}
+
+.feature-text-content h2 {
+    font-size: 2.4em;
+    color: #2c3e50;
+    line-height: 1.3;
+    margin-top: 10px; /* Espacio después de la etiqueta */
+    margin-bottom: 20px;
+}
+
+.feature-text-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.features-cta {
+    align-self: flex-start; /* Alinea el botón a la izquierda dentro de su contenedor flex */
+}
+
+/* Estilos para las Etiquetas (tags) */
+.tag {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 500;
+    margin-bottom: 10px; /* Espacio debajo de la etiqueta en las tarjetas */
+}
+
+.tag-outline {
+    border: 1px solid #ccc;
+    color: #020100;  
+    background-color: #fff;
+}
+
+.tag-dark-blue {
+    background-color: rgba(190, 190, 190, 0.5);  
+    color: #020100;
+}
+
+.tag-light-blue {
+    background-color: rgba(190, 190, 190, 0.5);  
+    color: #020100; /* Texto oscuro para contraste */
+}
+
+.feature-card {
+    grid-column: span 1; 
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    overflow: hidden; 
+    position: relative; 
+    display: flex;
+    flex-direction: column; 
+}
+
+.feature-card .tag {
+    position: absolute; /* Posicionar la etiqueta sobre la imagen */
+    top: 15px;
+    left: 15px;
+    z-index: 2; /* Asegura que la etiqueta esté sobre la imagen */
+}
+
+.feature-card img {
+    width: 100%;
+    height: 350px; /* Altura fija para la imagen, ajusta según sea necesario */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    display: block;
+}
+
+.feature-card .card-overlay-content {
+    background-color: #FDE538; /* Overlay oscuro semi-transparente */
+    color: #020100;
+    padding: 20px;
+    margin-top: auto; /* Empuja el overlay hacia abajo si la imagen es más alta */
+    /* Si la imagen siempre va a tener una altura fija y el overlay siempre abajo,
+       puedes quitar el margin-top:auto y ajustar el posicionamiento del overlay si es necesario */
+    min-height: 70px; /* Altura mínima para el contenido del overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-card .card-overlay-content h3 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.feature-card .card-overlay-content p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+/* Estilos para la Navegación de la Sección (Abajo a la Derecha) */
+.section-navigation {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    align-items: center;
+    gap: 20px; /* Espacio entre el texto y las flechas */
+}
+
+.section-navigation .nav-text {
+    font-size: 0.95em;
+    color: #555;
+    margin: 0;
+    max-width: 250px; /* Limita el ancho del texto */
+    text-align: right;
+}
+
+.section-navigation .nav-arrows {
+    display: flex;
+    gap: 10px; /* Espacio entre las flechas */
+}
+
+.nav-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #ffd700; /* Amarillo */
+    color: #333;
+    border-radius: 50%; /* Círculo */
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-arrow:hover {
+    background-color: #e0a800; /* Amarillo más oscuro */
+    transform: scale(1.05);
+}
+
+/* --- Estilos de la Sección FAQ --- */
+.faq-section {
+    padding: 60px 0;
+    background-color: #fff; /* Fondo blanco o un gris muy claro como #f8f9fa */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.faq-list {
+    max-width: 800px; /* Ancho máximo para la lista de FAQs */
+    margin: 0 auto; /* Centrar la lista */
+}
+
+.faq-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.faq-question {
+    padding: 18px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    list-style: none; /* Elimina el marcador por defecto del summary */
+    display: flex;
+    justify-content: space-between; /* Empuja el ícono a la derecha */
+    align-items: center;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none; /* Oculta el marcador por defecto en WebKit (Chrome, Safari) */
+}
+
+.faq-icon {
+    font-size: 1.2em;
+    color: #555;
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] .faq-question {
+    border-bottom: 1px solid #e0e0e0; /* Línea divisoria cuando está abierto */
+    color: #007bff; /* Opcional: Cambiar color del texto de la pregunta al abrir */
+}
+
+.faq-item[open] .faq-icon {
+    transform: rotate(180deg); /* Rota el ícono cuando está abierto */
+}
+
+.faq-answer {
+    padding: 20px 25px;
+    font-size: 1em;
+    line-height: 1.7;
+    color: #555;
+    border-top: 1px solid #f0f0f0; /* Sutil línea para separar la respuesta si no se usa borde en question */
+}
+
+.faq-answer p,
+.faq-answer ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.faq-answer ul {
+    padding-left: 20px;
+}
+.faq-answer li {
+    margin-bottom: 5px;
+}
+
+.faq-answer p:last-child,
+.faq-answer ul:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Estilos de la Sección Contacto --- */
+.contact-section {
+    padding: 60px 0;
+    background-color: #fff; /* Fondo general de la sección */
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que se apilen en pantallas pequeñas */
+    gap: 40px;
+}
+
+.contact-info-left {
+    flex: 1; /* Ocupa la mitad del espacio */
+    min-width: 300px; /* Ancho mínimo antes de envolver */
+}
+
+.contact-info-left .section-title {
+    margin-bottom: 20px; /* Ajusta según sea necesario */
+}
+.no-bottom-margin { /* Clase de utilidad */
+    margin-bottom: 20px !important;
+}
+
+.contact-info-left p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.map-embed {
+    width: 100%;
+    height: 250px; /* Altura inicial para el placeholder, el iframe la definirá */
+    background-color: #f0f0f0; /* Color de fondo para el placeholder del mapa */
+    border-radius: 8px;
+    overflow: hidden; /* Para que el iframe con bordes redondeados se vea bien */
+}
+
+.map-embed iframe { /* Estilos para cuando insertes el iframe de Google Maps */
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
+}
+
+.contact-form-right {
+    flex: 1; /* Ocupa la otra mitad del espacio */
+    min-width: 300px; /* Ancho mínimo */
+    background-color: #fff200; /* Amarillo vibrante de fondo */
+    padding: 30px 35px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd; /* Borde sutil para los campos */
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #fff; /* Fondo blanco para los campos */
+    box-sizing: border-box; /* Para que el padding no aumente el ancho total */
+    color: #333;
+}
+
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form input[type="tel"]::placeholder,
+.contact-form textarea::placeholder {
+    color: #888; /* Color del placeholder */
+}
+
+.contact-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 100px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #333; /* Negro un poco más claro al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+/* --- Estilos del Footer --- */
+.site-footer {
+    color: #e0e0e0; /* Color de texto claro general para el footer */
+    position: relative; /* Para el acento superior si se quisiera posicionar de forma absoluta */
+}
+
+.footer-accent-top {
+    height: 10px; /* Altura de la franja amarilla */
+    background-color: #ffd700; /* Amarillo, ajusta si es necesario */
+    /* Si quieres que la curva sea más pronunciada, podrías necesitar un SVG
+       o técnicas más avanzadas con pseudo-elementos y transformaciones.
+       Para un efecto simple de curva solo en el contenido oscuro: */
+}
+
+.footer-main-content {
+    background-color: #1c1c1c; /* Fondo oscuro principal */
+    padding: 50px 0;
+    border-top-left-radius: 25px; /* Redondeo superior izquierdo */
+    border-top-right-radius: 25px; /* Redondeo superior derecho */
+    /* Si el acento amarillo está separado, este margen negativo lo mete "debajo" */
+    margin-top: -5px; /* Ajusta este valor para que la curva se vea bien con el acento */
+    position: relative; /* Para asegurar que el margen negativo funcione como se espera */
+    z-index: 1;
+}
+
+.footer-columns {
+    display: flex;
+    flex-wrap: wrap; /* Para que las columnas se apilen en pantallas pequeñas */
+    justify-content: space-between;
+    gap: 30px; /* Espacio entre columnas */
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px; /* Ancho mínimo para cada columna antes de apilarse */
+    margin-bottom: 20px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.footer-column p {
+    font-size: 0.95em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    font-size: 0.95em;
+}
+
+.contact-info li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info .icon {
+    margin-right: 10px;
+    color: #ffd700; /* Color amarillo para los iconos de contacto */
+    font-size: 1.2em;
+}
+
+.quick-links ul,
+.social-media-icons {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.95em;
+    line-height: 1.8;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.quick-links li a:hover {
+    color: #ffd700; /* Amarillo al pasar el mouse */
+    padding-left: 5px; /* Pequeño efecto de indentación */
+}
+
+.social-media-icons {
+    display: flex;
+    gap: 12px; /* Espacio entre iconos sociales */
+}
+
+.social-media-icons .social-icon {
+    display: inline-flex; /* Cambiado a inline-flex */
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #333; /* Fondo para los iconos sociales */
+    color: #fff;
+    border-radius: 50%; /* Círculos */
+    text-decoration: none;
+    font-size: 1.1em; /* Tamaño del texto/icono dentro del círculo */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-media-icons .social-icon:hover {
+    background-color: #ffd700; /* Amarillo al pasar el mouse */
+    color: #1c1c1c; /* Texto oscuro para contraste */
+    transform: translateY(-2px);
+}
+
+.footer-copyright {
+    background-color: #111; /* Fondo aún más oscuro para el copyright */
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.85em;
+    position: relative; /* Para que el z-index funcione correctamente */
+    z-index: 0; /* Detrás del main-content si hay solapamiento */
+}
+
+/* --- Ajustes de Responsividad para el Footer --- */
+@media (max-width: 992px) {
+    .footer-column {
+        min-width: calc(50% - 30px); /* Dos columnas en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-main-content {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding: 40px 0 20px; /* Menos padding en móvil */
+    }
+    .footer-logo {
+        font-size: 1.8em;
+    }
+    .footer-column {
+        min-width: 100%; /* Una columna en móviles */
+        text-align: center; /* Centrar contenido de columnas en móvil */
+    }
+    .contact-info li {
+        justify-content: center; /* Centrar items de contacto */
+    }
+    .social-media-icons {
+        justify-content: center; /* Centrar iconos sociales */
+    }
+    .footer-copyright {
+        font-size: 0.8em;
+    }
+}
+
+/* --- Ajustes para Responsividad en la Sección Contacto --- */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Apila las columnas */
+    }
+    .contact-info-left,
+    .contact-form-right {
+        flex-basis: 100%; /* Cada una ocupa todo el ancho */
+    }
+    .contact-form-right {
+        padding: 25px;
+    }
+    .contact-info-left .section-title {
+         text-align:center; /* Centra el título en móvil si se desea */
+    }
+    .contact-info-left p {
+         text-align:center; /* Centra el párrafo en móvil si se desea */
+    }
+}
+
+/* --- Ajustes para Responsividad en la Sección FAQ (si es necesario) --- */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2em;
+    }
+    .faq-question {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+    .faq-answer {
+        padding: 15px 20px;
+        font-size: 0.95em;
+    }
 }
 
 @media (max-width: 992px) {
