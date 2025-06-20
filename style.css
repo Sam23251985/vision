@@ -199,17 +199,6 @@ body, html {
     background-color: #e0a800;
 }
 
-.features-section {
-    padding: 60px 0;
-    background-color: #f8f9fa; /* Fondo ligeramente gris, o #fff si prefieres blanco */
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas de igual tamaño */
-    gap: 30px; /* Espacio entre los elementos del grid */
-    align-items: stretch; /* Asegura que los elementos del grid tengan la misma altura si es posible */
-}
 
 /* Estilo para el contenido de texto a la izquierda */
 .feature-text-content {
@@ -238,6 +227,71 @@ body, html {
     align-self: flex-start; /* Alinea el botón a la izquierda dentro de su contenedor flex */
 }
 
+/* --- Estilos de la Sección ¿Cómo Funciona? --- */
+
+.how-it-works-section {
+    padding: 80px 0;
+    background-color: #fff; /* Fondo blanco para variar */
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    position: relative; /* Necesario para la línea de conexión */
+    gap: 20px; /* Espacio entre los pasos */
+}
+
+/* La línea de conexión que une los números */
+.steps-container::before {
+    content: '';
+    position: absolute;
+    top: 35px; /* Alinea verticalmente con el centro de los círculos */
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background-image: linear-gradient(to right, #e0e0e0 50%, transparent 50%);
+    background-size: 20px 3px;
+    z-index: 1;
+}
+
+.step {
+    flex-basis: 23%; /* Distribuye el espacio entre los 4 pasos */
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Para que los números estén por encima de la línea */
+}
+
+.step-number {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 25px auto;
+    background-color: #ffd700; /* Amarillo */
+    color: #333;
+    border-radius: 50%; /* Círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    border: 5px solid #fff; /* Borde blanco para "cortar" la línea de fondo */
+    box-shadow: 0 0 0 3px #e0e0e0; /* Un anillo gris sutil */
+}
+
+.step-content h3 {
+    font-size: 1.5em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.step-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+
 /* Estilos para las Etiquetas (tags) */
 .tag {
     display: inline-block;
@@ -264,97 +318,141 @@ body, html {
     color: #020100; /* Texto oscuro para contraste */
 }
 
+/* ====================================================================== */
+/* REEMPLAZA TUS ESTILOS DE FEATURES Y CARRUSEL CON ESTE BLOQUE */
+/* ====================================================================== */
+
+.features-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* El contenedor que define el área VISIBLE del carrusel */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* La "pista" que contiene TODAS las tarjetas y que se moverá */
+.carousel-track {
+    display: flex; /* Pone las tarjetas en fila */
+    transition: transform 0.5s ease-in-out; /* Animación de deslizamiento */
+    height: 100%;
+}
+
+/* Estilo para CADA tarjeta DENTRO del carrusel */
+.carousel-card {
+    width: 50%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+/* Estilos para la tarjeta individual (reutilizados y ajustados) */
 .feature-card {
-    grid-column: span 1; 
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-    overflow: hidden; 
-    position: relative; 
+    overflow: hidden;
+    position: relative;
+    
+    /* --- CAMBIOS CLAVE AQUÍ --- */
     display: flex;
-    flex-direction: column; 
+    flex-direction: column; /* Apila la imagen y el texto verticalmente */
+    height: 450px; 
 }
 
 .feature-card .tag {
-    position: absolute; /* Posicionar la etiqueta sobre la imagen */
+    position: absolute;
     top: 15px;
     left: 15px;
-    z-index: 2; /* Asegura que la etiqueta esté sobre la imagen */
+    z-index: 2;
 }
 
 .feature-card img {
     width: 100%;
-    height: 350px; /* Altura fija para la imagen, ajusta según sea necesario */
-    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    height: 280px;
+    object-fit: cover;
     display: block;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
 }
 
 .feature-card .card-overlay-content {
-    background-color: #FDE538; /* Overlay oscuro semi-transparente */
-    color: #020100;
-    padding: 20px;
-    margin-top: auto; /* Empuja el overlay hacia abajo si la imagen es más alta */
-    /* Si la imagen siempre va a tener una altura fija y el overlay siempre abajo,
-       puedes quitar el margin-top:auto y ajustar el posicionamiento del overlay si es necesario */
-    min-height: 70px; /* Altura mínima para el contenido del overlay */
+    background-color: rgba(40, 50, 60, 0.9);
+    color: #fff;
+    padding: 25px;
+    
+    /* --- CAMBIOS CLAVE AQUÍ --- */
+    flex-grow: 1; /* Hace que este contenedor ocupe todo el espacio sobrante */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centra el texto verticalmente en su espacio */
 }
 
-.feature-card .card-overlay-content h3 {
-    font-size: 1.3em;
+.card-overlay-content h3 {
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-.feature-card .card-overlay-content p {
-    font-size: 0.9em;
-    line-height: 1.5;
+.card-overlay-content p {
     margin-bottom: 0;
-    opacity: 0.9;
 }
 
-/* Estilos para la Navegación de la Sección (Abajo a la Derecha) */
+/* Estilos para los botones de navegación del carrusel */
 .section-navigation {
     margin-top: 40px;
     display: flex;
-    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    justify-content: flex-end;
     align-items: center;
-    gap: 20px; /* Espacio entre el texto y las flechas */
+    gap: 20px;
 }
 
-.section-navigation .nav-text {
+.nav-text {
     font-size: 0.95em;
     color: #555;
     margin: 0;
-    max-width: 250px; /* Limita el ancho del texto */
+    max-width: 250px;
     text-align: right;
 }
 
-.section-navigation .nav-arrows {
+.nav-arrows {
     display: flex;
-    gap: 10px; /* Espacio entre las flechas */
+    gap: 10px;
 }
 
 .nav-arrow {
+    width: 40px;
+    height: 40px;
+    background-color: #ffd700;
+    color: #333;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #ffd700; /* Amarillo */
-    color: #333;
-    border-radius: 50%; /* Círculo */
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-arrow:hover {
-    background-color: #e0a800; /* Amarillo más oscuro */
-    transform: scale(1.05);
+    background-color: #e0a800;
+    transform: scale(1.1);
+}
+
+.nav-arrow.is-hidden {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: scale(1);
 }
 
 /* --- Estilos de la Sección FAQ --- */
@@ -941,112 +1039,189 @@ body, html {
 }
 
 /* --- Ajustes de Responsividad para el Footer --- */
+/* ====================================================================== */
+/* ====================================================================== */
+/* ESTILOS RESPONSIVOS GLOBALES                      */
+/* ====================================================================== */
+/* ====================================================================== */
+
+
+/* --- Estilos para el Menú Hamburguesa (Oculto en Escritorio) --- */
+.hamburger-menu {
+    display: none; /* Oculto por defecto */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 11; /* Asegura que esté por encima de otros elementos del header */
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* ====================================================================== */
+/* TABLET - Pantallas de hasta 992px de ancho               */
+/* ====================================================================== */
 @media (max-width: 992px) {
-    .footer-column {
-        min-width: calc(50% - 30px); /* Dos columnas en tablets */
+    .container {
+        padding: 0 30px;
     }
-}
 
-@media (max-width: 768px) {
-    .footer-main-content {
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        padding: 40px 0 20px; /* Menos padding en móvil */
-    }
-    .footer-logo {
-        font-size: 1.8em;
-    }
-    .footer-column {
-        min-width: 100%; /* Una columna en móviles */
-        text-align: center; /* Centrar contenido de columnas en móvil */
-    }
-    .contact-info li {
-        justify-content: center; /* Centrar items de contacto */
-    }
-    .social-media-icons {
-        justify-content: center; /* Centrar iconos sociales */
-    }
-    .footer-copyright {
-        font-size: 0.8em;
-    }
-}
+    h1, .hero-content-left h1 { font-size: 2.5em; }
+    h2, .section-title { font-size: 2.2em; }
 
-/* --- Ajustes para Responsividad en la Sección Contacto --- */
-@media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column; /* Apila las columnas */
+    /* Apilamos la sección de Features */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
     }
-    .contact-info-left,
-    .contact-form-right {
-        flex-basis: 100%; /* Cada una ocupa todo el ancho */
-    }
-    .contact-form-right {
-        padding: 25px;
-    }
-    .contact-info-left .section-title {
-         text-align:center; /* Centra el título en móvil si se desea */
-    }
-    .contact-info-left p {
-         text-align:center; /* Centra el párrafo en móvil si se desea */
-    }
-}
-
-/* --- Ajustes para Responsividad en la Sección FAQ (si es necesario) --- */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2em;
-    }
-    .faq-question {
-        padding: 15px 20px;
-        font-size: 1em;
-    }
-    .faq-answer {
-        padding: 15px 20px;
-        font-size: 0.95em;
-    }
-}
-
-@media (max-width: 992px) {
-    .hero-container {
-        flex-direction: column; 
+    .feature-text-content {
         text-align: center;
     }
-    .hero-content-left {
-        padding-right: 0;
-        margin-bottom: 40px;
+    .features-cta {
+        align-self: center;
     }
-    .hero-image-right {
-        width: 100%;
-        max-width: 500px; 
-        margin: 0 auto;
+
+    /* Apilamos la sección "Cómo Funciona" a 2 columnas */
+    .steps-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 50px;
     }
-    .image-overlay-content {
-        position: relative; 
-        bottom: auto;
-        left: auto;
-        right: auto;
-        margin-top: -50px; 
-        background-color: #2c3e50; 
+    .steps-container::before {
+        display: none; /* Ocultamos la línea de conexión */
+    }
+    .step {
+        flex-basis: 45%;
     }
 }
 
+
+/* ====================================================================== */
+/* MÓVIL - Pantallas de hasta 768px de ancho               */
+/* ====================================================================== */
 @media (max-width: 768px) {
-    .header-container {
+    /* --- Header y Menú Hamburguesa --- */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
+        transition: transform 0.4s ease-in-out;
+        transform: translateX(100%); /* Oculto a la derecha por defecto */
+        z-index: 10;
     }
+
+    .main-nav.is-active {
+        transform: translateX(0); /* Se muestra al activar */
+    }
+
     .main-nav ul {
         flex-direction: column;
-        align-items: center;
-        margin-top: 15px;
+        text-align: center;
+        gap: 30px;
     }
+
     .main-nav ul li {
         margin-left: 0;
-        margin-bottom: 10px;
     }
+
+    .main-nav ul li a {
+        font-size: 1.8em;
+        color: #333;
+    }
+
+    /* Ocultamos el botón CTA original y lo movemos al menú */
     .header-cta {
-        margin-top: 15px;
+        display: none;
     }
-    .hero-content-left h1 {
-        font-size: 2.2em;
+    .main-nav.is-active .header-cta {
+        display: inline-block;
+        margin-top: 30px;
+        font-size: 1.2em;
     }
+    
+    .hamburger-menu {
+        display: flex; /* Mostramos el botón hamburguesa */
+    }
+    
+    /* Animación del botón a una "X" */
+    .hamburger-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+
+    /* --- Ajustes Generales para Móvil --- */
+    h1, .hero-content-left h1 { font-size: 2em; }
+    h2, .section-title { font-size: 1.8em; }
+
+    .section-subtitle {
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+    
+    /* Hero Section */
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content-left { padding-right: 0; }
+    .image-overlay-content { margin-top: 0; position: static; transform: none; }
+
+
+    /* Cómo Funciona Section */
+    .step {
+        flex-basis: 80%; /* Una columna más ancha */
+    }
+
+    /* Features Carousel: mostramos una tarjeta a la vez */
+    .carousel-card {
+        width: 100%;
+        flex-basis: 100%;
+    }
+    .section-navigation {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    .nav-text { text-align: center; }
+
+    /* Contact Section */
+    .contact-container {
+        flex-direction: column;
+    }
+
+    /* Footer */
+    .footer-columns {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contact-info li { justify-content: center; }
+    .social-media-icons { justify-content: center; }
 }
