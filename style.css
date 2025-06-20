@@ -27,9 +27,19 @@ body, html {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
     font-size: 1.8em;
     font-weight: bold;
     color: #e0a800; 
+}
+
+.logo img {
+    height: auto;
+    max-height: 40px;
+    margin-right: 10px;
+    display: block; 
 }
 
 .main-nav ul {
@@ -410,12 +420,32 @@ body, html {
     transform: rotate(180deg); /* Rota el ícono cuando está abierto */
 }
 
+/* --- CÓDIGO MODIFICADO PARA ANIMACIÓN DE DESPLIEGUE --- */
 .faq-answer {
-    padding: 20px 25px;
     font-size: 1em;
     line-height: 1.7;
     color: #555;
-    border-top: 1px solid #f0f0f0; /* Sutil línea para separar la respuesta si no se usa borde en question */
+    max-height: 0;
+    overflow: hidden;
+    
+    /* Colapsamos el padding vertical, pero mantenemos el horizontal de 25px */
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    /* La transición que animará el cambio de altura y padding */
+    transition: max-height 0.8s ease-in-out, padding-top 0.5s ease-in-out, padding-bottom 0.5s ease-in-out;
+    
+    /* El borde se moverá al estado [open] para que no aparezca cuando está cerrado */
+    border-top: none; 
+}
+
+.faq-item[open] > .faq-answer {
+    max-height: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #f0f0f0;
 }
 
 .faq-answer p,
@@ -429,7 +459,6 @@ body, html {
 .faq-answer li {
     margin-bottom: 5px;
 }
-
 .faq-answer p:last-child,
 .faq-answer ul:last-child {
     margin-bottom: 0;
@@ -517,7 +546,7 @@ body, html {
 
 .contact-form textarea {
     resize: vertical; /* Permite redimensionar verticalmente */
-    min-height: 100px;
+    min-height: 190px;
 }
 
 .btn-submit {
@@ -666,6 +695,249 @@ body, html {
     font-size: 0.85em;
     position: relative; /* Para que el z-index funcione correctamente */
     z-index: 0; /* Detrás del main-content si hay solapamiento */
+}
+
+/* --- Estilos de la Sección de Comparación --- */
+.comparison-section {
+    padding: 60px 0;
+    background-color: #f8f9fa; /* Fondo gris claro */
+}
+
+/* --- Estilos MEJORADOS de la Sección de Comparación --- */
+.comparison-section {
+    padding: 80px 0; /* Un poco más de espacio vertical */
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #2c3e50;
+    font-weight: 700;
+    /* Ajustamos el margen inferior para dar espacio ANTES del subtítulo */
+    margin-bottom: 15px; /* Aumentado para dar más aire */
+}
+
+.section-subtitle {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+    max-width: 700px; /* Limita el ancho de línea para mejor lectura */
+    /* IMPORTANTE: Ajustamos los márgenes superior e inferior */
+    margin-top: 0; /* Asegura que no haya margen superior extra */
+    margin-left: auto; /* Centra el subtítulo horizontalmente */
+    margin-right: auto; /* Centra el subtítulo horizontalmente */
+    margin-bottom: 60px; /* ¡Este es el cambio clave! Aumenta mucho el espacio DESPUÉS del subtítulo */
+}
+
+/* Contenedor para hacer la tabla responsive */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Eliminamos el borde del contenedor para un look más integrado */
+    border-radius: 12px; /* Redondeamos las esquinas de la sombra */
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08); /* Sombra más suave y difusa */
+}
+
+.comparison-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+    background-color: #fff; /* Fondo blanco para la tabla */
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 20px 25px; /* Más padding para que la tabla "respire" */
+    text-align: left; /* Alineamos a la izquierda para mejor lectura */
+    vertical-align: middle; /* Alineación vertical al centro */
+    /* Eliminamos todos los bordes para añadir solo los que necesitamos */
+    border: none;
+    border-bottom: 1px solid #eff2f5; /* Línea separadora de filas muy sutil */
+}
+
+.comparison-table tbody tr:last-child th,
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Encabezados de la tabla (Columnas) */
+.comparison-table thead th {
+    text-align: center;
+    font-size: 1.05em;
+    font-weight: 700; /* Más grueso */
+    color: #37474f; /* Un color de texto más suave que el negro puro */
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+    border-bottom: 3px solid #e0e0e0; /* Borde inferior más grueso */
+}
+
+/* Encabezados de las filas (Características) */
+.comparison-table tbody th {
+    font-weight: 600;
+    color: #263238;
+}
+
+/* --- Columna Destacada MEJORADA --- */
+.comparison-table .highlight-col {
+    background-color: #fff8e1; /* Un amarillo pálido más cálido */
+}
+
+.comparison-table thead .highlight-col {
+    background-color: #ffd700;
+    color: #333;
+    font-size: 1.2em; /* Más grande para destacar */
+    border-left: 2px solid #ffe57f; /* Línea lateral sutil */
+    border-right: 2px solid #ffe57f; /* Línea lateral sutil */
+}
+
+/* Centramos el contenido de las celdas de datos (no los encabezados de fila) */
+.comparison-table tbody td {
+    text-align: center;
+    color: #455a64;
+}
+
+/* Iconos de Check y Cross MEJORADOS */
+.check-mark {
+    color: #28a745;
+    font-size: 1.9em; /* Más grandes */
+    font-weight: 900; /* Más gruesos */
+}
+
+.cross-mark {
+    color: #dc3545;
+    font-size: 1.9em; /* Más grandes */
+    font-weight: 900; /* Más gruesos */
+}
+.comparison-table tbody tr:nth-child(even) .highlight-col {
+    background-color: #fff5e6; /* Versión un poco más oscura del amarillo pálido para el rayado */
+}
+
+/* --- Estilos de la Sección de Video --- */
+.video-section {
+    padding: 60px 0;
+    background-color: #fff; /* Fondo blanco o el que prefieras */
+    text-align: center; /* Opcional: Centra el título y subtítulo */
+}
+
+.video-section .container {
+    max-width: 960px; /* Un ancho máximo común para el contenido */
+    margin: 0 auto; /* Centra el contenedor principal de la sección */
+    padding: 0 20px; /* Espaciado lateral dentro del contenedor */
+}
+
+/* Contenedor responsivo para el video */
+.video-wrapper {
+    position: relative;
+    width: 100%; /* Ocupa el 100% del ancho de su contenedor (.video-section .container) */
+    max-width: 900px; /* Ancho máximo del video */
+    margin: 30px auto 0 auto; /* Centra horizontalmente el wrapper y añade margen superior */
+    overflow: hidden;
+    padding-top: 56.25%; /* Proporción 16:9 */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- Estilos de la Sección de Beneficios --- */
+.benefits-section {
+    padding: 80px 0;
+    background-color: #f8f9fa; /* Un fondo gris claro para separar secciones */
+}
+
+.benefits-grid {
+    display: grid;
+    /* Crea columnas que se ajustan solas. Cada una tendrá un mínimo de 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Espacio entre las tarjetas */
+    margin-top: 50px; /* Espacio después del subtítulo */
+}
+
+.benefit-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 35px 30px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px); /* Efecto de "levantarse" al pasar el mouse */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.benefit-icon {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 25px auto; /* Centra el círculo y le da espacio abajo */
+    background-color: #fffaf0; /* Un amarillo muy pálido, casi crema */
+    border-radius: 50%; /* Lo hace un círculo perfecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffe5b4; /* Borde amarillo pálido */
+}
+
+.benefit-icon span {
+    font-size: 2.8em; /* Tamaño del icono Unicode */
+    color: #e0a800; /* Color del icono */
+}
+
+.benefit-card h3 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.benefit-card p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* --- Estilos MEJORADOS para la Notificación Flotante --- */
+.notification {
+    /* POSICIONAMIENTO FIJO (La clave para que flote) */
+    position: fixed;
+    bottom: 30px;    /* A 30px del borde inferior */
+    right: 30px;     /* A 30px del borde derecho */
+    z-index: 1000;   /* Asegura que esté por encima de todo lo demás */
+    
+    /* Le damos un ancho para que no ocupe toda la pantalla */
+    width: 100%;
+    max-width: 350px;
+
+    /* Apariencia (similar a la de antes) */
+    background-color: #28a745;
+    color: white;
+    padding: 18px 25px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+
+    /* Estado oculto y animación (la misma de antes) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease-in-out; /* 'all' animará opacidad y transform */
+}
+
+/* Esta regla se mantiene igual, no necesita cambios */
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 /* --- Ajustes de Responsividad para el Footer --- */
